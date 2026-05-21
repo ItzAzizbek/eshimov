@@ -90,4 +90,13 @@ export const projects: Project[] = [
     size: 0.74,
     category: "Social",
   },
+  {
+    name: "Reading",
+    tagline: "IELTS Reading Platform",
+    url: "https://reading.uz/eshimov",
+    color: "#cffafe",
+    emissive: "#22d3ee",
+    size: 0.74,
+    category: "Social",
+  },
 ];
