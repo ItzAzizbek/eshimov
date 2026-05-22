@@ -40,7 +40,7 @@ export function Contact() {
             </h2>
             <p className="max-w-lg text-base leading-relaxed text-ink-dim md:text-lg">
               Building something ambitious, looking for a co-founder, or want
-              to compare notes on AI-assisted shipping? My inbox is open.
+              to compare notes on solo shipping? My inbox is open.
             </p>
 
             <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -79,7 +79,7 @@ export function Contact() {
           className="flex flex-col items-start justify-between gap-4 border-t border-line pt-8 font-mono text-xs uppercase tracking-[0.2em] text-ink-mute sm:flex-row sm:items-center"
         >
           <span>© 2026 · Eshimov Azizbek</span>
-          <span>Built with Next · Framer · AI</span>
+          <span>Hand-coded with Next · Framer</span>
         </motion.div>
       </motion.div>
     </section>

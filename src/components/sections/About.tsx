@@ -12,8 +12,8 @@ const PRINCIPLES = [
   },
   {
     code: "02",
-    title: "AI as co-pilot",
-    body: "Claude, Cursor, Codex — compress weeks into hours without sacrificing taste.",
+    title: "Hand-written code",
+    body: "Every line typed by me. No vibecoding, no autopilot — craft over generation.",
   },
   {
     code: "03",
@@ -60,9 +60,9 @@ export function About() {
             variants={fadeUp}
             className="font-display text-[clamp(2rem,5vw,4rem)] leading-[1.05] tracking-tight text-ink"
           >
-            I build with{" "}
-            <span className="italic text-ink-dim">AI as a lens</span>, not a
-            crutch.
+            I write every line{" "}
+            <span className="italic text-ink-dim">by hand</span> — no
+            vibecoding.
           </motion.h2>
 
           <motion.div
@@ -71,14 +71,13 @@ export function About() {
           >
             <p>
               Every project I&apos;ve shipped was prototyped, designed, and
-              built with AI in the loop — from copy and component scaffolding
-              to ambient automation. The judgment is still mine. The leverage
-              is shared.
+              built manually — character by character. No autopilot, no
+              scaffolding generators. The taste is mine. The code is mine.
             </p>
             <p className="text-ink-mute">
-              I&apos;m not interested in &quot;AI products&quot; that exist to
-              demo a model. I&apos;m interested in tools that quietly do
-              something that used to be tedious, expensive, or impossible.
+              I&apos;m not interested in shortcuts that strip the craft out of
+              the work. I&apos;m interested in tools that quietly do something
+              that used to be tedious, expensive, or impossible.
             </p>
           </motion.div>
         </div>
