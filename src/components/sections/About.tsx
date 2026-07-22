@@ -4,11 +4,18 @@ import { motion } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const FACTS = [
+  { label: "Age", value: "14" },
+  { label: "IELTS", value: "8.0" },
+  { label: "SAT", value: "1370" },
+  { label: "Based in", value: "Samarkand" },
+];
+
 const PRINCIPLES = [
   {
     code: "01",
-    title: "Velocity",
-    body: "Ship a working surface in a day. Iterate against real users — not committees.",
+    title: "Models are a means",
+    body: "The model is never the product. Context, memory, and routing are where the real engineering lives.",
   },
   {
     code: "02",
@@ -17,8 +24,8 @@ const PRINCIPLES = [
   },
   {
     code: "03",
-    title: "Many small bets",
-    body: "Each project is a probe. Some find life, some don't — both teach the next one.",
+    title: "Velocity",
+    body: "Ship a working surface in a day. Iterate against real users — not committees.",
   },
   {
     code: "04",
@@ -60,9 +67,9 @@ export function About() {
             variants={fadeUp}
             className="font-display text-[clamp(2rem,5vw,4rem)] leading-[1.05] tracking-tight text-ink"
           >
-            I write every line{" "}
-            <span className="italic text-ink-dim">by hand</span> — no
-            vibecoding.
+            Fourteen, and already{" "}
+            <span className="italic text-ink-dim">shipping</span> AI to real
+            users.
           </motion.h2>
 
           <motion.div
@@ -70,9 +77,10 @@ export function About() {
             className="flex flex-col gap-6 text-base leading-[1.7] text-ink-dim md:text-lg"
           >
             <p>
-              Every project I&apos;ve shipped was prototyped, designed, and
-              built manually — character by character. No autopilot, no
-              scaffolding generators. The taste is mine. The code is mine.
+              I&apos;m an AI engineer. My main project, Portail, unifies every
+              frontier model behind one thread of context — it carries a $300K
+              valuation. Everything in it was prototyped, designed, and built
+              manually, character by character.
             </p>
             <p className="text-ink-mute">
               I&apos;m not interested in shortcuts that strip the craft out of
@@ -81,6 +89,25 @@ export function About() {
             </p>
           </motion.div>
         </div>
+
+        <motion.dl
+          variants={fadeUp}
+          className="grid grid-cols-2 gap-px border-t border-l border-line bg-line md:grid-cols-4"
+        >
+          {FACTS.map((f) => (
+            <div
+              key={f.label}
+              className="flex flex-col gap-2 border-b border-r border-line bg-bg p-8"
+            >
+              <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-mute">
+                {f.label}
+              </dt>
+              <dd className="font-display text-[clamp(1.8rem,4vw,3rem)] leading-none tracking-tight text-ink">
+                {f.value}
+              </dd>
+            </div>
+          ))}
+        </motion.dl>
 
         <motion.dl
           variants={fadeUp}

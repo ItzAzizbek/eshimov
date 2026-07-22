@@ -17,11 +17,11 @@ export function Nav() {
       const d = new Date();
       setNow(
         d.toLocaleTimeString("en-GB", {
-          timeZone: "Asia/Tashkent",
+          timeZone: "Asia/Samarkand",
           hour: "2-digit",
           minute: "2-digit",
           hour12: false,
-        }) + " TSH",
+        }) + " SMK",
       );
     };
     tick();

@@ -27,7 +27,7 @@ export function Hero() {
           className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-ink-mute"
         >
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-ink" />
-          Founder, Tashkent
+          AI Engineer · Samarkand
         </motion.div>
 
         <motion.h1
@@ -48,8 +48,10 @@ export function Hero() {
           className="grid gap-10 md:grid-cols-[1fr_auto] md:items-end"
         >
           <p className="max-w-xl text-lg leading-relaxed text-ink-dim md:text-xl">
-            I design and ship AI-native products — solo, fast, with taste.
-            Eight in orbit, more on the way.
+            AI engineer, 14. I build{" "}
+            <span className="text-ink">Portail</span> — a unified AI
+            workspace valued at $300K — and ship the rest solo, fast, with
+            taste.
           </p>
 
           <a

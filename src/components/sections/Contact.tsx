@@ -39,25 +39,25 @@ export function Contact() {
               <span className="italic text-ink-dim">something</span>.
             </h2>
             <p className="max-w-lg text-base leading-relaxed text-ink-dim md:text-lg">
-              Building something ambitious, looking for a co-founder, or want
-              to compare notes on solo shipping? My inbox is open.
+              Working on something ambitious in AI, investing, or want to
+              compare notes on solo shipping? My inbox is open.
             </p>
 
             <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
-                href="mailto:itzazizbek@gmail.com"
+                href="mailto:info@portail.cc"
                 className="group inline-flex items-center gap-3 self-start border border-ink bg-ink px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-bg transition-colors duration-300 hover:bg-bg hover:text-ink"
               >
-                itzazizbek@gmail.com
+                info@portail.cc
                 <ArrowOut />
               </a>
               <a
-                href="https://getclevora.xyz"
+                href="https://portail.cc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 self-start border border-line px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-ink-dim transition-colors duration-300 hover:border-ink hover:text-ink"
               >
-                Flagship: Clevora
+                Main project: Portail
                 <ArrowOut />
               </a>
             </div>
@@ -67,8 +67,8 @@ export function Contact() {
             variants={fadeUp}
             className="grid grid-cols-2 self-end border-t border-l border-line"
           >
-            <Meta label="Region" value="Tashkent" />
-            <Meta label="Lat / Lon" value="41.31 / 69.27" />
+            <Meta label="Region" value="Samarkand" />
+            <Meta label="Focus" value="AI Engineering" />
             <Meta label="Status" value="Available" />
             <Meta label="Year" value="MMXXVI" />
           </motion.dl>

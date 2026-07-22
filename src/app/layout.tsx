@@ -22,13 +22,13 @@ const display = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Eshimov Azizbek — Founder",
+  title: "Eshimov Azizbek — AI Engineer",
   description:
-    "Founder shipping AI-native products at the speed of thought. Builder of Clevora, Entirety, Okayable, Kaizen, and more.",
+    "AI engineer from Samarkand. Builder of Portail, a unified AI workspace valued at $300K, and Clevora AI.",
   openGraph: {
-    title: "Eshimov Azizbek — Founder",
+    title: "Eshimov Azizbek — AI Engineer",
     description:
-      "Founder shipping AI-native products at the speed of thought.",
+      "AI engineer from Samarkand. Builder of Portail and Clevora AI.",
     type: "website",
   },
 };
