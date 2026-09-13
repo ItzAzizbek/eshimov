@@ -50,7 +50,7 @@ export function Hero() {
           <p className="max-w-xl text-lg leading-relaxed text-ink-dim md:text-xl">
             AI engineer, 14. I build{" "}
             <span className="text-ink">Portail</span> — a unified AI
-            workspace valued at $300K — and ship the rest solo, fast, with
+            workspace valued at $450,000 — and ship the rest solo, fast, with
             taste.
           </p>
 
