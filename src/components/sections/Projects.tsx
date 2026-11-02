@@ -1,146 +1,176 @@
-"use client";
+import { ArrowOut } from "@/components/ArrowOut";
+import { projects, type Project } from "@/lib/projects";
 
-import { motion } from "framer-motion";
-import { projects } from "@/lib/projects";
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } },
-};
+const TONES = [
+  "bg-lapis text-white",
+  "bg-turquoise text-lapis",
+  "bg-bg text-ink",
+  "bg-gold text-lapis",
+];
 
 export function Projects() {
-  const [featured, ...rest] = projects;
+  return (
+    <>
+      {projects.map((p, i) => (
+        <ProjectSpace key={p.id} project={p} flagship={i === 0} />
+      ))}
+    </>
+  );
+}
+
+function ProjectSpace({ project: p, flagship }: { project: Project; flagship: boolean }) {
+  const dark = p.tone === "dark";
+  const host = p.url ? new URL(p.url).hostname : null;
 
   return (
     <section
-      id="work"
-      className="relative mx-auto max-w-7xl px-6 py-32 md:px-10 md:py-48"
+      id={p.id}
+      className={`relative ${
+        dark ? "on-dark bg-cobalt text-white" : "bg-bg text-ink"
+      } ${!dark && p.id === "1600" ? "tile-field" : ""}`}
+      style={dark && p.id === "bazaargg" ? { background: "var(--lapis)" } : undefined}
     >
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.06 } },
-        }}
-        className="flex flex-col gap-16"
-      >
-        <motion.div variants={fadeUp} className="flex items-center gap-4">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-ink-mute">
-            02 — Selected work
-          </span>
-          <span className="h-px flex-1 bg-line" />
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-ink-mute">
-            {String(projects.length).padStart(2, "0")} in orbit
-          </span>
-        </motion.div>
-
-        <motion.div variants={fadeUp} className="flex flex-col gap-6">
-          <h2 className="font-display text-[clamp(2rem,5vw,4rem)] leading-[1.05] tracking-tight text-ink">
-            Things I&apos;ve <span className="italic text-ink-dim">shipped</span>.
+      <div className="mx-auto grid max-w-7xl gap-16 px-6 py-28 md:px-10 md:py-40 lg:grid-cols-[1.15fr_1fr] lg:gap-24">
+        <div className="flex flex-col gap-8">
+          <h2
+            className={`font-display text-[clamp(3.5rem,11vw,6rem)] leading-[0.9] ${
+              dark ? "text-white" : "text-lapis"
+            }`}
+          >
+            {p.name}
+            <span className={dark ? "text-gold" : "text-gold-deep"}>.</span>
           </h2>
-          <p className="max-w-md text-base leading-relaxed text-ink-dim md:text-lg">
-            Two products in active orbit. Both live, both clickable.
-          </p>
-        </motion.div>
-
-        <motion.a
-          variants={fadeUp}
-          href={featured.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative flex flex-col gap-10 overflow-hidden border border-line bg-bg-soft p-8 transition-colors duration-500 hover:bg-bg md:gap-14 md:p-14"
-        >
-          <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.2em] text-ink-mute">
-            <span className="inline-flex items-center gap-2 text-ink">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-ink" />
-              Main project · 01
-            </span>
-            <span>{featured.category}</span>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <h3 className="font-display text-[clamp(2.6rem,8vw,6.5rem)] leading-[0.95] tracking-tight text-ink transition-transform duration-700 ease-out group-hover:-translate-y-1">
-              {featured.name}<span className="text-ink-dim">.</span>
-            </h3>
-            <p className="max-w-2xl text-base leading-relaxed text-ink-dim md:text-lg">
-              {featured.tagline}
+          {p.role && (
+            <p className={`text-xl font-semibold ${dark ? "text-gold" : "text-cobalt"}`}>
+              {p.role}
             </p>
-            {featured.blurb && (
-              <p className="max-w-2xl text-sm leading-relaxed text-ink-mute md:text-base">
-                {featured.blurb}
-              </p>
-            )}
-          </div>
+          )}
+          <p className={`max-w-xl text-xl leading-snug md:text-2xl ${dark ? "text-white" : "text-ink"}`}>
+            {p.tagline}
+          </p>
+          <p className={`max-w-xl text-base leading-[1.7] md:text-lg ${dark ? "text-white/85" : "text-ink-dim"}`}>
+            {p.blurb}
+          </p>
 
-          <div className="mt-2 flex flex-wrap items-center justify-between gap-6 font-mono text-[11px] uppercase tracking-[0.2em] text-ink">
-            <span className="inline-flex items-center gap-3">
-              <span>Visit</span>
-              <span className="block h-px w-10 bg-ink transition-all duration-500 group-hover:w-20" />
-              <ArrowOut />
-            </span>
-            {featured.meta && (
-              <span className="text-ink-dim">{featured.meta}</span>
-            )}
-          </div>
-        </motion.a>
-
-        <motion.ul
-          variants={fadeUp}
-          className="flex flex-col border-t border-line"
-        >
-          {rest.map((proj, i) => (
-            <li key={proj.name}>
+          <div className="mt-2 flex flex-wrap items-center gap-x-10 gap-y-5">
+            {p.url ? (
               <a
-                href={proj.url}
+                href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group grid items-baseline gap-4 border-b border-line px-2 py-8 transition-colors duration-500 hover:bg-bg-soft md:grid-cols-[4rem_1fr_auto] md:gap-10 md:px-6 md:py-10"
+                className={`group inline-flex items-center gap-3 px-8 py-4 text-base font-semibold transition-colors duration-300 ${
+                  dark
+                    ? "bg-gold text-lapis hover:bg-white"
+                    : "bg-lapis text-white hover:bg-cobalt"
+                }`}
               >
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] tabular-nums text-ink-mute">
-                  {String(i + 2).padStart(2, "0")}
-                </span>
-
-                <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-8">
-                  <h3 className="font-display text-2xl tracking-tight text-ink transition-transform duration-500 ease-out group-hover:-translate-y-0.5 md:min-w-[10rem] md:text-3xl">
-                    {proj.name}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-ink-dim md:text-base">
-                    {proj.tagline}
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-mute transition-colors duration-300 group-hover:text-ink">
-                  <span>{proj.category}</span>
-                  <span className="block h-px w-6 bg-current transition-all duration-500 group-hover:w-12" />
-                  <ArrowOut />
-                </div>
+                Visit {host}
+                <ArrowOut />
               </a>
-            </li>
-          ))}
-        </motion.ul>
-      </motion.div>
+            ) : (
+              <a
+                href="#work"
+                className="link-underline inline-flex items-center gap-2 text-base font-semibold text-gold"
+              >
+                See what it became: Portail
+              </a>
+            )}
+            {p.meta && <span className="font-display text-2xl text-gold">{p.meta}</span>}
+            {p.started && <span className="text-base text-white/85">{p.started}</span>}
+          </div>
+        </div>
+
+        {flagship && p.models ? (
+          <figure className="flex flex-col gap-5 self-center">
+            <ol className="relative flex flex-col" aria-label="Models on one thread">
+              <span aria-hidden className="absolute bottom-6 left-[1.6rem] top-6 w-[3px] bg-gold" />
+              {p.models.map((m, i) => (
+                <li
+                  key={m}
+                  className="relative flex items-center gap-6"
+                  style={{ marginLeft: `${i % 2 === 0 ? 0 : 1.5}rem` }}
+                >
+                  <StarChip />
+                  <span
+                    className={`font-display flex-1 border border-lapis px-6 py-5 text-3xl ${TONES[i % TONES.length]}`}
+                  >
+                    {m}
+                  </span>
+                </li>
+              ))}
+              {p.modelsMore && (
+                <li
+                  className="relative flex items-center gap-6"
+                  style={{ marginLeft: `${p.models.length % 2 === 0 ? 0 : 1.5}rem` }}
+                >
+                  <StarChip />
+                  <span className="font-display flex-1 border border-white/60 px-6 py-5 text-3xl text-white">
+                    {p.modelsMore}
+                  </span>
+                </li>
+              )}
+            </ol>
+            <figcaption className="max-w-sm pl-[4.9rem] text-sm leading-relaxed text-white/80">
+              354 models from 58 labs share one thread.
+            </figcaption>
+          </figure>
+        ) : (
+          p.plate && (
+            <div
+              className={`relative flex min-h-[16rem] flex-col justify-end gap-3 self-center overflow-hidden p-8 md:p-10 ${
+                dark ? "bg-turquoise text-lapis" : "bg-lapis text-white"
+              }`}
+            >
+              <Star className="absolute right-6 top-6 size-24 opacity-25" />
+              <p className="font-display text-5xl leading-none md:text-6xl">{p.plate[0]}</p>
+              <p className="max-w-xs text-lg font-medium">{p.plate[1]}</p>
+            </div>
+          )
+        )}
+
+        {p.image && p.url && (
+          <a
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`group relative block border-[5px] border-gold shadow-[0_0_0_10px_var(--lapis)] lg:col-span-2 ${
+              dark ? "bg-lapis" : "bg-white"
+            }`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={p.image}
+              alt={p.imageAlt}
+              width={1600}
+              height={p.image.includes("okayable") ? 690 : 1000}
+              loading="lazy"
+              className="block h-auto w-full"
+            />
+            <span className="absolute bottom-0 right-0 inline-flex items-center gap-2 bg-gold px-5 py-3 text-sm font-semibold text-lapis transition-colors group-hover:bg-white">
+              Open {host}
+              <ArrowOut />
+            </span>
+          </a>
+        )}
+      </div>
+      <div className="tile-band" aria-hidden />
     </section>
   );
 }
 
-function ArrowOut() {
+function StarChip() {
   return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 14 14"
-      fill="none"
-      className="transition-transform duration-500 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-    >
-      <path
-        d="M3 11 L11 3 M5 3 L11 3 L11 9"
-        stroke="currentColor"
-        strokeWidth="1.25"
-      />
+    <span aria-hidden className="z-10 grid size-[3.4rem] shrink-0 place-items-center bg-lapis">
+      <Star className="size-9 text-gold" />
+    </span>
+  );
+}
+
+function Star({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
+      <rect x="5" y="5" width="14" height="14" />
+      <rect x="5" y="5" width="14" height="14" transform="rotate(45 12 12)" />
     </svg>
   );
 }

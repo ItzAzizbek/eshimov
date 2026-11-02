@@ -1,95 +1,59 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
 const STACK = [
-  { name: "TypeScript", note: "Language" },
-  { name: "JavaScript", note: "Language" },
-  { name: "React", note: "Interface" },
-  { name: "Next.js", note: "Framework" },
-  { name: "Tailwind CSS", note: "Styling" },
-  { name: "SCSS", note: "Styling" },
-  { name: "Framer Motion", note: "Motion" },
-  { name: "Three.js", note: "3D" },
-  { name: "Node.js", note: "Runtime" },
-  { name: "Express", note: "APIs" },
-  { name: "SQL", note: "Data" },
-  { name: "Supabase", note: "Backend" },
-  { name: "Firebase", note: "Backend" },
-  { name: "LLM APIs", note: "AI" },
-  { name: "Figma", note: "Design" },
+  { name: "TypeScript", note: "Language", tone: "bg-lapis text-white" },
+  { name: "JavaScript", note: "Language", tone: "bg-lapis text-white" },
+  { name: "React", note: "Interface", tone: "bg-lapis text-white" },
+  { name: "Next.js", note: "Framework", tone: "bg-lapis text-white" },
+  { name: "Tailwind CSS", note: "Styling", tone: "bg-cobalt text-white" },
+  { name: "SCSS", note: "Styling", tone: "bg-cobalt text-white" },
+  { name: "Framer Motion", note: "Motion", tone: "bg-cobalt text-white" },
+  { name: "Three.js", note: "3D", tone: "bg-cobalt text-white" },
+  { name: "Node.js", note: "Runtime", tone: "bg-turquoise text-lapis" },
+  { name: "Express", note: "APIs", tone: "bg-turquoise text-lapis" },
+  { name: "SQL", note: "Data", tone: "bg-turquoise text-lapis" },
+  { name: "Supabase", note: "Backend", tone: "bg-turquoise text-lapis" },
+  { name: "Firebase", note: "Backend", tone: "bg-turquoise text-lapis" },
+  { name: "LLM APIs", note: "AI", tone: "bg-gold text-lapis" },
+  { name: "Figma", note: "Design", tone: "bg-bg text-ink" },
 ];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } },
-};
 
 export function Stack() {
   return (
-    <section
-      id="stack"
-      className="relative mx-auto max-w-7xl px-6 py-32 md:px-10 md:py-48"
-    >
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.08 } },
-        }}
-        className="flex flex-col gap-20"
-      >
-        <motion.div variants={fadeUp} className="flex items-center gap-4">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-ink-mute">
-            03 — Stack
-          </span>
-          <span className="h-px flex-1 bg-line" />
-        </motion.div>
-
-        <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
-          <motion.h2
-            variants={fadeUp}
-            className="font-display text-[clamp(2rem,5vw,4rem)] leading-[1.05] tracking-tight text-ink"
-          >
-            Sharp tools, <span className="italic text-ink-dim">chosen</span> —
-            not collected.
-          </motion.h2>
-
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-col gap-6 text-base leading-[1.7] text-ink-dim md:text-lg"
-          >
-            <p>
-              What I build with day to day. The list stays short on purpose —
-              depth in a few tools beats a wall of logos.
-            </p>
-          </motion.div>
+    <section id="stack" className="tile-field relative bg-bg-soft">
+      <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
+          <h2 className="font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.98] text-lapis">
+            The tools I build with.
+          </h2>
+          <p className="self-end text-base leading-[1.7] text-ink-dim md:text-lg">
+            What I use day to day, coloured by job: lapis for the
+            core, cobalt for look and motion, turquoise for the back end,
+            gold for AI.
+          </p>
         </div>
 
-        <motion.ul
-          variants={fadeUp}
-          className="grid grid-cols-2 gap-px border-t border-l border-line bg-line md:grid-cols-3 lg:grid-cols-5"
-        >
+        <ul className="mt-16 grid bg-bg grid-cols-2 border-l border-t border-lapis/70 md:grid-cols-3 lg:grid-cols-5">
           {STACK.map((s) => (
             <li
               key={s.name}
-              className="group flex flex-col gap-3 border-b border-r border-line bg-bg p-6 transition-colors duration-500 hover:bg-bg-soft md:p-8"
+              className={`group relative flex aspect-[4/3] flex-col justify-end overflow-hidden border-b border-r border-lapis/70 p-5 ${s.tone}`}
             >
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-mute">
-                {s.note}
-              </span>
-              <span className="font-display text-xl leading-none tracking-tight text-ink">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="absolute right-3 top-3 size-8 opacity-25 transition-transform duration-700 ease-out group-hover:rotate-45"
+                aria-hidden
+              >
+                <rect x="5" y="5" width="14" height="14" />
+                <rect x="5" y="5" width="14" height="14" transform="rotate(45 12 12)" />
+              </svg>
+              <span className="text-sm font-medium">{s.note}</span>
+              <span className="font-display text-2xl leading-none md:text-3xl">
                 {s.name}
               </span>
-              <span className="mt-1 block h-px w-5 bg-ink-faint transition-all duration-500 group-hover:w-9 group-hover:bg-ink" />
             </li>
           ))}
-        </motion.ul>
-      </motion.div>
+        </ul>
+      </div>
     </section>
   );
 }

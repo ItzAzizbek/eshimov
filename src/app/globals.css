@@ -1,15 +1,23 @@
 @import "tailwindcss";
 
+/* Registan glaze: cobalt, lapis, turquoise, gold lustre on white glaze. */
 :root {
-  --bg: #ffffff;
-  --bg-soft: #fafafa;
-  --ink: #0a0a0a;
-  --ink-2: #1a1a1a;
-  --ink-dim: #525252;
-  --ink-mute: #8a8a8a;
-  --ink-faint: #d4d4d4;
-  --line: #e8e8e8;
-  --line-soft: #f0f0f0;
+  --bg: #f2f6f3;
+  --bg-soft: #e6eeec;
+  --ink: #0a2147;
+  --ink-2: #0b2d63;
+  --ink-dim: #2c4672;
+  --ink-mute: #4d6490;
+  --ink-faint: #a9bdc6;
+  --line: #bcd0d6;
+  --line-soft: #d5e3e6;
+
+  --cobalt: #0f4c97;
+  --lapis: #0b2d63;
+  --turquoise: #1aa6b7;
+  --gold: #e9b93a;
+  --gold-deep: #c9971c;
+  --brick: #a8532e;
 }
 
 @theme inline {
@@ -22,13 +30,24 @@
   --color-ink-faint: var(--ink-faint);
   --color-line: var(--line);
   --color-line-soft: var(--line-soft);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cobalt: var(--cobalt);
+  --color-lapis: var(--lapis);
+  --color-turquoise: var(--turquoise);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-brick: var(--brick);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-body);
   --font-display: var(--font-display);
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
 }
 
 html,
@@ -41,70 +60,96 @@ body {
 }
 
 body {
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--gold);
+  color: var(--lapis);
 }
 
 .font-display {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
-.font-mono {
-  font-feature-settings: "ss01", "cv11";
+/* Tabular figures wherever numbers sit in a column or a clock */
+.tnum {
+  font-variant-numeric: tabular-nums;
 }
 
-/* Hairline divider */
-.hairline {
-  height: 1px;
-  background: var(--line);
+/* Repeating star-and-cross tile band, used as a rule and as a frame. */
+.tile-band {
+  height: 22px;
+  background-color: var(--lapis);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='4' y='4' width='14' height='14' fill='%231aa6b7'/%3E%3Crect x='4' y='4' width='14' height='14' fill='%230f4c97' transform='rotate(45 11 11)'/%3E%3Ccircle cx='11' cy='11' r='2.2' fill='%23e9b93a'/%3E%3C/svg%3E");
+  background-size: 22px 22px;
 }
 
-/* Scrollbar — slim, neutral */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-  background: var(--ink-faint);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover { background: var(--ink-mute); }
-
-/* Focus ring — minimal black */
-:focus-visible {
-  outline: 1px solid var(--ink);
-  outline-offset: 3px;
-  border-radius: 1px;
+/* Quiet star-and-cross field on a light glaze ground, for sections below the hero. */
+.tile-field {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect x='14' y='14' width='36' height='36' fill='%230f4c97' fill-opacity='0.09'/%3E%3Crect x='14' y='14' width='36' height='36' fill='%231aa6b7' fill-opacity='0.12' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%23c9971c' fill-opacity='0.4'/%3E%3C/svg%3E");
+  background-size: 64px 64px;
 }
 
-/* Animated underline used by links */
+/* Text link: underline draws from the left, gold on dark grounds */
 .link-underline {
   position: relative;
-  display: inline-block;
 }
 .link-underline::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -2px;
-  height: 1px;
+  bottom: -3px;
+  height: 2px;
   width: 100%;
   background: currentColor;
   transform: scaleX(0);
   transform-origin: right center;
-  transition: transform 500ms cubic-bezier(0.65, 0, 0.35, 1);
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.link-underline:hover::after {
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
   transform: scaleX(1);
   transform-origin: left center;
 }
 
-/* Reduced motion */
+/* Scrollbar in lapis and gold */
+html {
+  scrollbar-color: var(--cobalt) var(--bg-soft);
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-soft);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cobalt);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lapis);
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold-deep);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.on-dark :focus-visible {
+  outline-color: var(--gold);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {

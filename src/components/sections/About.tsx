@@ -1,135 +1,77 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
-const FACTS = [
-  { label: "Age", value: "14" },
-  { label: "IELTS", value: "8.0" },
-  { label: "SAT", value: "1370" },
-  { label: "Based in", value: "Samarkand" },
-];
-
 const PRINCIPLES = [
   {
-    code: "01",
     title: "Models are a means",
-    body: "The model is never the product. Context, memory, and routing are where the real engineering lives.",
+    body: "The model is never the product. The engineering is in context, memory, and routing.",
   },
   {
-    code: "02",
     title: "AI writes, I decide",
-    body: "Generation is delegated; judgment isn't. I hold the architecture and the taste — the model holds the keyboard.",
+    body: "I hand off the generation and keep the judgment. I hold the architecture and the taste; the model holds the keyboard.",
   },
   {
-    code: "03",
     title: "Velocity",
-    body: "Ship a working surface in a day. Iterate against real users — not committees.",
+    body: "Ship a working surface in a day, then iterate with real users.",
   },
   {
-    code: "04",
     title: "Useful on day one",
-    body: "Tools that earn their keep immediately. No vapor, no decks. Links you can click.",
+    body: "Tools should earn their keep right away. I show links you can click, not decks.",
   },
 ];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } },
-};
 
 export function About() {
   return (
     <section
       id="about"
-      className="relative mx-auto max-w-7xl px-6 py-32 md:px-10 md:py-48"
+      className="tile-field relative"
     >
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.25 }}
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.08 } },
-        }}
-        className="flex flex-col gap-20"
-      >
-        <motion.div variants={fadeUp} className="flex items-center gap-4">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-ink-mute">
-            01 — About
-          </span>
-          <span className="h-px flex-1 bg-line" />
-        </motion.div>
-
-        <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
-          <motion.h2
-            variants={fadeUp}
-            className="font-display text-[clamp(2rem,5vw,4rem)] leading-[1.05] tracking-tight text-ink"
-          >
-            Fourteen, and already{" "}
-            <span className="italic text-ink-dim">shipping</span> AI to real
-            users.
-          </motion.h2>
-
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-col gap-6 text-base leading-[1.7] text-ink-dim md:text-lg"
-          >
-            <p>
-              I&apos;m an AI engineer. My main project, Portail, unifies every
-              frontier model behind one thread of context — it carries a $300K
-              valuation. Everything in it was prototyped, designed, and built
-              manually, character by character.
-            </p>
-            <p className="text-ink-mute">
-              I&apos;m not interested in shortcuts that strip the craft out of
-              the work. I&apos;m interested in tools that quietly do something
-              that used to be tedious, expensive, or impossible.
-            </p>
-          </motion.div>
+      <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
+      <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
+        <div className="flex flex-col gap-10">
+          <h2 className="font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.98] text-lapis">
+            Fifteen, and already shipping AI to real users.
+          </h2>
+          <p className="font-display text-2xl leading-tight text-cobalt md:text-3xl">
+            IELTS 8.0. SAT 1370.
+            <br />
+            Based in Samarkand, Uzbekistan.
+          </p>
         </div>
 
-        <motion.dl
-          variants={fadeUp}
-          className="grid grid-cols-2 gap-px border-t border-l border-line bg-line md:grid-cols-4"
-        >
-          {FACTS.map((f) => (
-            <div
-              key={f.label}
-              className="flex flex-col gap-2 border-b border-r border-line bg-bg p-8"
-            >
-              <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-mute">
-                {f.label}
-              </dt>
-              <dd className="font-display text-[clamp(1.8rem,4vw,3rem)] leading-none tracking-tight text-ink">
-                {f.value}
-              </dd>
-            </div>
-          ))}
-        </motion.dl>
+        <div className="flex flex-col gap-6 text-base leading-[1.7] text-ink-dim md:text-lg">
+          <p>
+            I&apos;m an AI engineer. My main project, Portail, puts every
+            frontier model behind one thread of context and carries a $450K
+            valuation. I direct the architecture and the taste, and AI writes
+            the code.
+          </p>
+          <p>
+            I build tools that take over work that used to be tedious,
+            expensive, or impossible, without cutting corners on the craft.
+          </p>
+        </div>
+      </div>
 
-        <motion.dl
-          variants={fadeUp}
-          className="grid grid-cols-1 gap-px border-t border-l border-line bg-line md:grid-cols-2 lg:grid-cols-4"
-        >
-          {PRINCIPLES.map((p) => (
-            <div
-              key={p.code}
-              className="group flex flex-col gap-4 border-b border-r border-line bg-bg p-8 transition-colors duration-500 hover:bg-bg-soft"
+      <ul className="mt-24 grid gap-x-16 gap-y-12 border-t-[3px] border-lapis pt-12 md:grid-cols-2">
+        {PRINCIPLES.map((p) => (
+          <li key={p.title} className="group flex gap-5">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="mt-1.5 size-7 shrink-0 text-turquoise transition-transform duration-500 ease-out group-hover:rotate-45 group-hover:text-gold-deep"
+              aria-hidden
             >
-              <div className="flex items-center justify-between font-mono text-xs uppercase tracking-[0.2em] text-ink-mute">
-                <span>{p.code}</span>
-                <span className="block h-px w-6 bg-ink-faint transition-all duration-500 group-hover:w-10 group-hover:bg-ink" />
-              </div>
-              <dt className="font-display text-2xl text-ink">{p.title}</dt>
-              <dd className="text-sm leading-relaxed text-ink-dim">
+              <rect x="5" y="5" width="14" height="14" />
+              <rect x="5" y="5" width="14" height="14" transform="rotate(45 12 12)" />
+            </svg>
+            <div className="flex flex-col gap-2">
+              <h3 className="font-display text-3xl text-lapis">{p.title}</h3>
+              <p className="max-w-md text-base leading-relaxed text-ink-dim">
                 {p.body}
-              </dd>
+              </p>
             </div>
-          ))}
-        </motion.dl>
-      </motion.div>
+          </li>
+        ))}
+      </ul>
+      </div>
     </section>
   );
 }

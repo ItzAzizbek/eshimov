@@ -1,17 +1,21 @@
 import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
 import { Projects } from "@/components/sections/Projects";
+import { About } from "@/components/sections/About";
+import { Education } from "@/components/sections/Education";
 import { Stack } from "@/components/sections/Stack";
 import { Contact } from "@/components/sections/Contact";
 
 export default function Page() {
   return (
-    <main className="relative z-10">
-      <Hero />
-      <About />
-      <Projects />
-      <Stack />
-      <Contact />
-    </main>
+    <>
+      <main className="relative">
+        <Hero />
+        <Projects />
+        <About />
+        <Education />
+        <Stack />
+        <Contact />
+      </main>
+    </>
   );
 }

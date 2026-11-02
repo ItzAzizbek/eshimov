@@ -1,34 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Familjen_Grotesk, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
-import { SmoothScroll } from "@/components/SmoothScroll";
 import { Nav } from "@/components/Nav";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const display = Instrument_Serif({
+const display = Familjen_Grotesk({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
+});
+
+const body = Hanken_Grotesk({
+  variable: "--font-body",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Eshimov Azizbek — AI Engineer",
+  title: "Eshimov Azizbek | AI Engineer",
   description:
-    "AI engineer from Samarkand. Builder of Portail, a unified AI workspace valued at $300K, and Clevora AI.",
+    "AI engineer from Samarkand. Builder of Portail, a unified AI workspace valued at $450K.",
   openGraph: {
-    title: "Eshimov Azizbek — AI Engineer",
+    title: "Eshimov Azizbek | AI Engineer",
     description:
-      "AI engineer from Samarkand. Builder of Portail and Clevora AI.",
+      "AI engineer from Samarkand. Builder of Portail, a unified AI workspace valued at $450K.",
     type: "website",
   },
 };
@@ -39,13 +31,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${display.variable} antialiased`}
-    >
+    <html lang="en" className={`${display.variable} ${body.variable} antialiased`}>
       <body className="bg-bg text-ink">
         <Nav />
-        <SmoothScroll>{children}</SmoothScroll>
+        {children}
       </body>
     </html>
   );

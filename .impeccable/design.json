@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-02T00:00:00Z",
+  "title": "Design System: Eshimov Azizbek Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "lapis": { "role": "primary", "displayName": "Lapis", "canonical": "#0b2d63", "tonalRamp": ["#030d1e", "#061a3b", "#0b2d63", "#2a4d85", "#4f72a6", "#7e9bc4", "#b3c6e0", "#e0e8f3"] },
+      "cobalt": { "role": "primary", "displayName": "Cobalt", "canonical": "#0f4c97", "tonalRamp": ["#041a38", "#08306a", "#0f4c97", "#2f6bb5", "#5589c9", "#83a9dc", "#b6cdeb", "#e1ebf7"] },
+      "turquoise": { "role": "secondary", "displayName": "Turquoise", "canonical": "#1aa6b7", "tonalRamp": ["#05353b", "#0a5660", "#12808d", "#1aa6b7", "#4cc0ce", "#7fd5df", "#b3e8ee", "#e2f6f8"] },
+      "gold": { "role": "tertiary", "displayName": "Gold Lustre", "canonical": "#e9b93a", "tonalRamp": ["#4a3705", "#7a5b0b", "#a98015", "#c9971c", "#e9b93a", "#f0cd6e", "#f6e0a2", "#fbf2d8"] },
+      "gold-deep": { "role": "tertiary", "displayName": "Deep Gold", "canonical": "#c9971c", "tonalRamp": ["#3d2d04", "#6b4f0a", "#9a7314", "#c9971c", "#dcb24e", "#e9ca80", "#f3e0b0", "#faf3de"] },
+      "brick": { "role": "tertiary", "displayName": "Kiln Brick (unused)", "canonical": "#a8532e", "tonalRamp": ["#2e150a", "#592a17", "#82401f", "#a8532e", "#c27650", "#d79c7e", "#e8c3b0", "#f6e6dd"] },
+      "glaze": { "role": "neutral", "displayName": "White Glaze", "canonical": "#f2f6f3", "tonalRamp": ["#2a2f2c", "#4c534f", "#78807b", "#a6aea9", "#c9d1cc", "#e0e7e2", "#f2f6f3", "#fafcfb"] },
+      "glaze-soft": { "role": "neutral", "displayName": "Soft Glaze", "canonical": "#e6eeec", "tonalRamp": ["#262c2b", "#464f4d", "#6f7a77", "#9ba7a4", "#c0cbc8", "#d6e1de", "#e6eeec", "#f4f8f7"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0a2147", "tonalRamp": ["#02070f", "#05122a", "#0a2147", "#2a4268", "#4f6788", "#7f93ad", "#b2bfd0", "#e0e6ee"] },
+      "ink-dim": { "role": "neutral", "displayName": "Dim Ink", "canonical": "#2c4672", "tonalRamp": ["#0c1423", "#18263f", "#2c4672", "#4a6490", "#6d84aa", "#98a9c6", "#c3cddf", "#e6eaf2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero name and contact headline. Familjen Grotesk 700." },
+      "headline": { "displayName": "Headline", "purpose": "About and Stack section headings." },
+      "title": { "displayName": "Title", "purpose": "Principle titles, model names, tile names, contact values." },
+      "body": { "displayName": "Body", "purpose": "Hanken Grotesk paragraphs, 1.6 to 1.7 line height." },
+      "label": { "displayName": "Label", "purpose": "Nav links, button text, tile category notes. Sentence case, no tracking." }
+    },
+    "shadows": [
+      { "name": "niche-double-edge", "value": "0 0 0 10px #0b2d63, 0 0 0 13px #c9971c", "purpose": "Zero-blur rings that form the niche's lapis and gold double edge, beside a 5px gold border. A ring of tile, not a shadow." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Underline draw (450ms) and niche rise (1.1s, 0.25s delay)." },
+      { "name": "button-fill", "value": "colors 300ms", "purpose": "Button fill swap on hover." },
+      { "name": "marker-turn", "value": "rotate 45deg, 500ms to 700ms ease-out", "purpose": "Star markers in principles and Stack tiles turn on hover." },
+      { "name": "wall-sweep", "value": "11000ms loop", "purpose": "Resting band of light across the canvas tile wall; static under reduced motion." },
+      { "name": "wall-intro", "value": "1300ms radial reveal", "purpose": "Tiles appear from the wall centre outward." },
+      { "name": "wall-warmth", "value": "radius 3.2 tiles; rise 0.22, decay 0.06 per frame", "purpose": "Pointer warms nearby stars cobalt to turquoise to gold." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "custom",
+      "refersTo": "button-primary",
+      "description": "The single gold action on a surface.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Email me</a>",
+      "css": ".ds-btn-primary { display: inline-block; background: #e9b93a; color: #0b2d63; padding: 16px 32px; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 0; transition: background-color 300ms, color 300ms; } .ds-btn-primary:hover { background: #0b2d63; color: #fff; } .ds-btn-primary:focus-visible { outline: 3px solid #c9971c; outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "custom",
+      "refersTo": "button-outline",
+      "description": "Secondary action on dark ground.",
+      "html": "<div style=\"background:#0b2d63;padding:24px\"><a class=\"ds-btn-outline\" href=\"#\">Main project: Portail</a></div>",
+      "css": ".ds-btn-outline { display: inline-block; border: 2px solid rgba(255,255,255,0.7); color: #fff; padding: 16px 32px; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 0; transition: border-color 300ms, color 300ms; } .ds-btn-outline:hover { border-color: #e9b93a; color: #e9b93a; } .ds-btn-outline:focus-visible { outline: 3px solid #e9b93a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Solid lapis bar with display wordmark, underline-draw links and a tile band edge.",
+      "html": "<header class=\"ds-nav\"><div class=\"ds-nav-row\"><span class=\"ds-nav-mark\">Eshimov<span class=\"ds-nav-dot\">.</span></span><nav class=\"ds-nav-links\"><a href=\"#\">Work</a><a href=\"#\">About</a><a href=\"#\">Stack</a><a href=\"#\">Contact</a></nav></div><div class=\"ds-band\"></div></header>",
+      "css": ".ds-nav { background: #0b2d63; color: #fff; } .ds-nav-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; } .ds-nav-mark { font-size: 24px; font-weight: 800; font-stretch: 78%; letter-spacing: -0.025em; } .ds-nav-dot { color: #e9b93a; } .ds-nav-links { display: flex; gap: 40px; } .ds-nav-links a { position: relative; color: rgba(255,255,255,0.9); font-weight: 500; text-decoration: none; } .ds-nav-links a::after { content: ''; position: absolute; left: 0; bottom: -3px; height: 2px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 450ms cubic-bezier(0.16,1,0.3,1); } .ds-nav-links a:hover::after, .ds-nav-links a:focus-visible::after { transform: scaleX(1); transform-origin: left; } .ds-nav-links a:hover { color: #fff; } .ds-nav-links a:focus-visible { outline: 3px solid #e9b93a; outline-offset: 3px; } .ds-band { height: 10px; background-color: #0b2d63; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='4' y='4' width='14' height='14' fill='%231aa6b7'/%3E%3Crect x='4' y='4' width='14' height='14' fill='%230f4c97' transform='rotate(45 11 11)'/%3E%3Ccircle cx='11' cy='11' r='2.2' fill='%23e9b93a'/%3E%3C/svg%3E\"); background-size: 22px 22px; }"
+    },
+    {
+      "name": "Niche",
+      "kind": "card",
+      "refersTo": "niche",
+      "description": "Pointed-arch hero panel with a gold double edge.",
+      "html": "<div style=\"background:#0b2d63;padding:32px 24px 0\"><div class=\"ds-niche\"><h1 class=\"ds-niche-name\">Eshimov<br>Azizbek</h1><p class=\"ds-niche-pitch\">AI engineer, 14, from Samarkand.</p></div></div>",
+      "css": ".ds-niche { width: min(94%, 56rem); margin: 0 auto; background: #f2f6f3; color: #0a2147; border: 5px solid #e9b93a; border-bottom: 0; border-radius: 50% 50% 0 0 / 18% 18% 0 0; box-shadow: 0 0 0 10px #0b2d63, 0 0 0 13px #c9971c; padding: 112px 48px 56px; text-align: center; } .ds-niche-name { margin: 0; color: #0b2d63; font-size: clamp(3.25rem, 10vw, 6rem); font-weight: 800; font-stretch: 78%; letter-spacing: -0.025em; line-height: 0.92; } .ds-niche-pitch { margin: 24px auto 0; max-width: 36rem; font-size: 20px; line-height: 1.6; color: #2c4672; }"
+    },
+    {
+      "name": "Stack Tile",
+      "kind": "card",
+      "refersTo": "stack-tile",
+      "description": "Square colour block coded by job, with a faint corner star that turns on hover.",
+      "html": "<div class=\"ds-tile\"><svg class=\"ds-tile-star\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><rect x=\"5\" y=\"5\" width=\"14\" height=\"14\"/><rect x=\"5\" y=\"5\" width=\"14\" height=\"14\" transform=\"rotate(45 12 12)\"/></svg><span class=\"ds-tile-note\">Framework</span><span class=\"ds-tile-name\">Next.js</span></div>",
+      "css": ".ds-tile { position: relative; display: flex; flex-direction: column; justify-content: flex-end; aspect-ratio: 4 / 3; width: 220px; padding: 20px; overflow: hidden; background: #0b2d63; color: #fff; border: 1px solid rgba(11,45,99,0.7); border-radius: 0; } .ds-tile-star { position: absolute; right: 12px; top: 12px; width: 32px; height: 32px; opacity: 0.25; transition: transform 700ms ease-out; } .ds-tile:hover .ds-tile-star { transform: rotate(45deg); } .ds-tile-note { font-size: 14px; font-weight: 500; } .ds-tile-name { font-size: 28px; font-weight: 800; font-stretch: 78%; letter-spacing: -0.025em; line-height: 1; }"
+    },
+    {
+      "name": "Tile Band",
+      "kind": "custom",
+      "refersTo": "tile-band",
+      "description": "Repeating star-and-cross strip used as a rule and frame.",
+      "html": "<div class=\"ds-tile-band\"></div>",
+      "css": ".ds-tile-band { height: 22px; background-color: #0b2d63; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='4' y='4' width='14' height='14' fill='%231aa6b7'/%3E%3Crect x='4' y='4' width='14' height='14' fill='%230f4c97' transform='rotate(45 11 11)'/%3E%3Ccircle cx='11' cy='11' r='2.2' fill='%23e9b93a'/%3E%3C/svg%3E\"); background-size: 22px 22px; }"
+    },
+    {
+      "name": "Principle Item",
+      "kind": "custom",
+      "refersTo": "colors.turquoise",
+      "description": "Turquoise star marker beside a display title and body line; marker turns gold on hover.",
+      "html": "<div class=\"ds-principle\"><svg class=\"ds-principle-star\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><rect x=\"5\" y=\"5\" width=\"14\" height=\"14\"/><rect x=\"5\" y=\"5\" width=\"14\" height=\"14\" transform=\"rotate(45 12 12)\"/></svg><div><h3>AI writes, I decide</h3><p>Generation is delegated; judgment isn't.</p></div></div>",
+      "css": ".ds-principle { display: flex; gap: 20px; background: #f2f6f3; padding: 24px; } .ds-principle-star { width: 28px; height: 28px; margin-top: 6px; flex-shrink: 0; color: #1aa6b7; transition: transform 500ms ease-out, color 500ms; } .ds-principle:hover .ds-principle-star { transform: rotate(45deg); color: #c9971c; } .ds-principle h3 { margin: 0 0 8px; color: #0b2d63; font-size: 30px; font-weight: 800; font-stretch: 78%; letter-spacing: -0.025em; } .ds-principle p { margin: 0; max-width: 28rem; color: #2c4672; line-height: 1.6; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Registan Tile Wall",
+    "overview": "The site is a glazed wall from Samarkand's Registan. Facts are laid like tiles: square, hard-edged, flat-coloured, set in grout. Cobalt, lapis, turquoise and gold lustre sit on a white glaze ground. The eight-point star-and-cross tile is the one repeating motif, and it appears as a canvas wall, a thin border band, a faint field behind light sections, and small markers.\n\nDensity is generous and confident. Headlines are heavy, width-condensed and tight; body copy is quiet and readable. Surfaces are flat colour blocks with no soft shadows, and depth comes from tone steps between lapis, cobalt and glaze. Gold is the only action colour and is rare enough to be read as the next step.\n\nThe hero is a pointed niche (an iwan arch) with a gold double edge, set against the tile wall. Colour sections alternate between dark (lapis, cobalt) and light (glaze with a quiet tile field), each closed by the tile band.",
+    "keyCharacteristics": [
+      "Palette of lapis, cobalt, turquoise and gold on white glaze; brick is declared but unused in the build.",
+      "One motif: the star-and-cross tile, in canvas, SVG band and field forms.",
+      "Square corners everywhere except the arched niche.",
+      "Sturdy display grotesk over a plain humanist body grotesk; no mono face.",
+      "Gold is the sole action colour; flat blocks, no blur shadows.",
+      "Motion is the tile wall (pointer warmth, resting sweep) plus small hover rotations; all of it has a still fallback."
+    ],
+    "rules": [
+      { "name": "The One Lustre Rule", "body": "Gold marks action and the single emphasis point on a surface. Never use it as a general decorative fill, and never put a second action colour beside it.", "section": "colors" },
+      { "name": "The Glaze Ground Rule", "body": "Light sections are glaze, never pure white, and carry the quiet tile field or a lapis rule. Dark sections are lapis or cobalt, never black.", "section": "colors" },
+      { "name": "The Dark-Ground Pair Rule", "body": "On lapis, cobalt and turquoise grounds text is white or lapis (turquoise and gold tiles take lapis text). Deep Gold is for light grounds only.", "section": "colors" },
+      { "name": "The Sturdy Display Rule", "body": "Every display and title element uses the font-display treatment (700). Never set a display face light, wide or italic.", "section": "typography" },
+      { "name": "The Sentence-Case Rule", "body": "Labels are plain sentence-case text at readable size. Section headings are statements, not tagged labels above them.", "section": "typography" },
+      { "name": "The Tabular Clock Rule", "body": "Numbers that sit in a column or a clock use tabular figures (the nav's Samarkand time).", "section": "typography" },
+      { "name": "The Flat Glaze Rule", "body": "Surfaces are flat colour. Separate them with tone, grout lines or the tile band; never with a blurred or offset shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use Gold Lustre (#e9b93a) for the one action on a surface, with lapis text.",
+      "Do build with square corners and flat colour blocks; use the tile motif for rules, markers and fields.",
+      "Do set every heading in the sturdy display treatment (700).",
+      "Do keep nav solid lapis, and give dark sections a tile band edge.",
+      "Do provide a static fallback for any motion; the wall draws once under prefers-reduced-motion.",
+      "Do use Deep Gold for focus and tile accents on glaze, Gold Lustre on dark."
+    ],
+    "donts": [
+      "Don't use blurred or offset drop shadows; use tone, grout or a zero-blur ring.",
+      "Don't introduce a second action colour or put gold on glaze as text.",
+      "Don't add a mono face, italic serif, tracked uppercase labels or kicker lines above headings.",
+      "Don't round buttons or panels; the arch is the only large curve.",
+      "Don't use black or pure white grounds."
+    ]
+  }
+}
